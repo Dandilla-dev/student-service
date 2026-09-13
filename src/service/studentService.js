@@ -27,6 +27,6 @@ export const countStudentsByNames = async names => {
 // TODO:  Implement countStudentsByNames
 }
 
-export const findStudentsByMinScore = async (exam, minscore) => {
+export const findStudentsByMinScore = async (exam, minScore) => {
 // TODO:  Implement findStudentsByName
 }

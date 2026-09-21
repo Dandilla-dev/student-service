@@ -19,7 +19,7 @@ export const findStudent = async (req, res) => {
             "status": 404,
             "error": "Not Found",
             "message": `Student with id ${req.params.id} not found`,
-            "path": req.params
+            "path": req.path
         })
     }
 }
@@ -34,7 +34,7 @@ export const deleteStudent = async (req, res) => {
             "status": 404,
             "error": "Not Found",
             "message": `Student with id ${req.params.id} not found`,
-            "path": req.params
+            "path": req.path
         })
     }
 }
@@ -49,13 +49,13 @@ export const updateStudent = async (req, res) => {
             "status": 404,
             "error": "Not Found",
             "message": `Student with id ${req.params.id} not found`,
-            "path": req.params
+            "path": req.path
         })
     }
 }
 
 export const addScore = async (req, res) => {
-    const success = await service.addScore(req.params.id, req.body);
+    const success = await service.addScore(req.params.id, req.body.examName, req.body.score);
     if (success) {
         return res.status(204).send();
     }else {
@@ -64,7 +64,7 @@ export const addScore = async (req, res) => {
             "status": 404,
             "error": "Not Found",
             "message": `student not found`,
-            "path": req.params
+            "path": req.path
         })
     }
 }

@@ -13,25 +13,31 @@ export const findStudent = async id => {
 }
 
 export const deleteStudent = async id => {
-//     TODO: Implement deleteStudent
+return repo.deleteStudentById(+id)
 }
 
+
 export const updateStudent = async (id, data) => {
-//     TODO: Implement updateStudent
+    let student = repo.updateStudent(+id, data);
+    if(student) {
+        student = {...student};
+        delete student.password;
+    }
+    return student;
 }
 
 export const addScore = async (id, exam, score) => {
-// TODO:  Implement addScore
+return repo.addScore(+id, exam, score);
 }
 
 export const findStudentsByName = async name => {
-// TODO:  Implement findStudentsByName
+return repo.findStudentsByName(name);
 }
 
 export const countStudentsByNames = async names => {
-// TODO:  Implement countStudentsByNames
+return repo.countStudentsByNames(names);
 }
 
 export const findStudentsByMinScore = async (exam, minScore) => {
-// TODO:  Implement findStudentsByName
+return repo.findStudentsByMinScore(exam, minScore);
 }

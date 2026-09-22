@@ -74,7 +74,14 @@ export const findStudentsByName = async (req, res) => {
 }
 
 export const countStudentsByNames = async (req, res) => {
-    const count = await service.countStudentsByNames(req.query.names);
+    let {names} = req.query
+    if(!names) {
+        names = []
+    }
+    if(!Array.isArray(names)) {
+        names = [names]
+    }
+    const count = await service.countStudentsByNames(names);
     return res.json(count);
 }
 

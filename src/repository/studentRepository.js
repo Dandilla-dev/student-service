@@ -11,11 +11,6 @@ export const createStudent = async ({id, name, password}) => {
     }
     await collection.insertOne({_id: id, name, password, scores:{}});
     return true;
-    // if(students.has(id)) {
-    //     return false
-    // }
-    // students.set(id,  new Student(id, name, password));
-    // return true;
 }
 
 export const findStudentById = async id => await collection.findOne({_id:id},  {projection: {password: 0}})
@@ -26,9 +21,9 @@ export const updateStudent = async (id, data) => await collection.findOneAndUpda
 
 export const findStudentsByName = async name => await collection.find({name: {$regex: `^${name}$`, $options: 'i'}}, {projection: {password: 0}}).toArray();
 
-export const countStudentsByNames = async names => {
-//TODO HW 1  implements ignore case functionality
-    return await collection.countDocuments({name: {$in: names}})
+export const countStudentsByNames = async names  => {
+    const res = names.map(name => new RegExp(`^${name}$`, 'i'));
+    return await collection.countDocuments({name: {$in: res}})
 
 }
 

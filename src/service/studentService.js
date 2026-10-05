@@ -34,6 +34,11 @@ export const findStudentsByMinScore = async (exam, minScore) => {
 
 
 function renameId(student) {
-    const {_id, ...rest} = student;
-    return {id: _id, ...rest}
+    if (student) {
+        student.id = student._id;
+        delete student._id;
+    }
+    return student;
+    // const {_id, ...rest} = student;
+    // return {id: _id, ...rest}
 }

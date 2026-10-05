@@ -1,8 +1,4 @@
-import Student from '../model/student.js';
 
-const students = new Map();
-let collection;
-export const init = db => collection = db.collection('college')
 
 export const createStudent = async ({id, name, password}) => {
     const existingStudent = await collection.findOne({_id: id});

@@ -10,6 +10,8 @@ const studentSchema = new Schema({
         of: Number,
         default: {}
     }
+}, {
+    versionKey: false
 })
 const Student = model('Student', studentSchema, 'college');
 export default Student;

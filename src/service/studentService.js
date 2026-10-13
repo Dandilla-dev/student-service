@@ -13,7 +13,7 @@ export const findStudent = async id => await repo.findStudentById(+id)
 
 export const deleteStudent = async id => await repo.deleteStudentById(+id)
 
-export const updateStudent = async (id, data) => (await repo.updateStudent(+id, data)).toObject()
+export const updateStudent = async (id, data) => (await repo.updateStudent(+id, data))?.toObject()
 
 
 export const addScore = async (id, exam, score) => await repo.updateStudent(+id,  {[`scores.${exam}`]: score});
